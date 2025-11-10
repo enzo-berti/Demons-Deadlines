@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e8a7ceea541b034aa5e73494e73ada5
+guid: 1efb8a56668857b4b923899772fe088a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,45 +97,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: curseur_demon_0
+      name: StartButton_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 14
-        width: 40
-        height: 34
+        x: 0
+        y: 0
+        width: 44
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 580c8e113fcd75d42abcda874a4ef6b0
-      internalID: -2034822868
+      spriteID: 34efc8979057997489cba8d81502331a
+      internalID: 901442919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: curseur_demon_1
+      name: StartButton_1
       rect:
         serializedVersion: 2
-        x: 74
-        y: 14
-        width: 40
-        height: 34
+        x: 44
+        y: 0
+        width: 44
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd4599f5f8343144da3dc68d3e53be4e
-      internalID: 1070799252
+      spriteID: 1d9121069630a0d4288a83ca0abae8d1
+      internalID: 2032843918
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 930a1269ae0ec8f4c9ebe3b9dac2d7fb
+    spriteID: 556551d044d639048b0607489269b0ac
     internalID: 0
     vertices: []
     indices: 
@@ -154,8 +154,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      curseur_demon_0: -2034822868
-      curseur_demon_1: 1070799252
+      StartButton_0: 901442919
+      StartButton_1: 2032843918
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
