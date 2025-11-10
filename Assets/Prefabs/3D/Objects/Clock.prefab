@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5685696966005334069}
   - component: {fileID: 291384492183613120}
   m_Layer: 0
-  m_Name: horloge
+  m_Name: Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
