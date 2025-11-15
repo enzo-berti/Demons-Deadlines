@@ -2,16 +2,15 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class screenGameplay : MonoBehaviour
+public class ScreenGameplay : MonoBehaviour
 {
     [SerializeField] CinemachineCamera screenCamera;
     [SerializeField] CinemachineCamera deskCamera;
     [SerializeField] Phone phone;
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] MouseLogic mouseLogic;
 
     public bool onScreen = false;
-
-    [SerializeField] GameObject mouse;
 
     public void Interact()
     {
@@ -23,6 +22,7 @@ public class screenGameplay : MonoBehaviour
         screenCamera.enabled = true;
         deskCamera.enabled = false;
         playerMovement.canInteract = false;
+        mouseLogic.CanMove = true;
 
         phone.TryHangUp();
         onScreen = true;
@@ -33,6 +33,7 @@ public class screenGameplay : MonoBehaviour
         screenCamera.enabled = false;
         deskCamera.enabled = true;
         playerMovement.canInteract = true;
+        mouseLogic.CanMove = false;
 
         onScreen = false;
     }
@@ -48,16 +49,5 @@ public class screenGameplay : MonoBehaviour
         {
             Out();
         }
-
-        MoveMouse();
-    }
-
-    public void MoveMouse()
-    {
-        var screenPoint = Input.mousePosition;
-        screenPoint.z = 99.0f; //distance of the plane from the camera
-        Vector3 pos = Camera.main.ScreenToWorldPoint(screenPoint);
-        
-        mouse.transform.localPosition = new Vector3(Input.mousePosition.x / Screen.width * 18f - 9f, Input.mousePosition.y / Screen.height * 10f - 5f, 99f);
     }
 }

@@ -1,11 +1,25 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEndDragHandler
+public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler, IPointerDownHandler
 {
-    [SerializeField] private RectTransform dragRectTransform;
+    private RectTransform dragRectTransform;
 
     private Vector3 lastPos = Vector2.zero;
+
+    private void Awake()
+    {
+        dragRectTransform = GetComponent<RectTransform>();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (MouseExtension.GetUIMousePos(gameObject, eventData.position, out Vector3 newPos))
+        {
+            lastPos = newPos;
+            transform.SetAsLastSibling();
+        }
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -14,7 +28,12 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEndDr
             return;
         }
 
-        lastPos = eventData.position;
+        if (MouseExtension.GetUIMousePos(gameObject, eventData.position, out Vector3 newPos))
+        {
+            dragRectTransform.transform.position += newPos - lastPos;
+        }
+
+        lastPos = newPos;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -24,24 +43,17 @@ public class DragWindow : MonoBehaviour, IBeginDragHandler, IDragHandler ,IEndDr
             return;
         }
 
-        Vector3 newPos = eventData.position;
-        dragRectTransform.transform.position += newPos - lastPos;
+        if (MouseExtension.GetUIMousePos(gameObject, eventData.position, out Vector3 newPos))
+        {
+            dragRectTransform.transform.position += newPos - lastPos;
+        }
 
         lastPos = newPos;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (!IsPointerOverButton(eventData))
-        {
-            return;
-        }
-
-    }
-
     bool IsPointerOverButton(PointerEventData eventData)
     {
-        var go = eventData.pointerCurrentRaycast.gameObject;
+        var go = eventData.pointerDrag;
         if (go == null) return false;
         return go.GetComponent<DragWindow>() != null;
     }

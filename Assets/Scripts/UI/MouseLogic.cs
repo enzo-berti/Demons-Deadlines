@@ -7,13 +7,19 @@ public class MouseLogic : MonoBehaviour
     [SerializeField] private Sprite clicSprite;
     [SerializeField] private Sprite normalSprite;
 
-    [SerializeField] private Image mouseImage;
+    private Image mouseImage;
+    private RectTransform mouseRectTransform;
+
+    [field: SerializeField] public bool CanMove { get; set; } = true;
+
 
     private void Awake()
     {
         mouseImage = GetComponent<Image>();
 
-        Cursor.visible = false; // because I don't know how to hide it by default in the game :clown:
+        //Cursor.visible = false; // because I don't know how to hide it by default in the game :clown:
+
+        mouseRectTransform = GetComponent<RectTransform>();
     }
 
     void Update()
@@ -27,8 +33,9 @@ public class MouseLogic : MonoBehaviour
             mouseImage.sprite = normalSprite;
         }
 
-        var screenPoint = Input.mousePosition;
-        screenPoint.z = 10.0f; //distance of the plane from the camera
-        transform.position = screenPoint;
+        if (CanMove && MouseExtension.GetUIMousePos(gameObject, Input.mousePosition, out Vector3 worldPos))
+        {
+            mouseRectTransform.position = worldPos;
+        }
     }
 }
